@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_head %}
+<title>Lista de alumnos</title>
+{% endblock title_head %}
+
+{% block portada %}
+<img class="img-fluid" src={% static 'assets/img/portfolio/portadaprueba.png' %} alt="..." />
+{% endblock portada %}
+
+{% block h1_header %}
+<h1 class="masthead-heading text-uppercase mb-0">Listado de alumnos/as</h1>
+{% endblock h1_header %}
+
+{% block subheading %}
+
+{% endblock subheading %}
+
+
+{% block contenido %}
+<button>
+    <li class="nav-item mx-0 mx-lg-1"><a class="masthead-subheading font-weight-light mb-0" href={% url 'inicio:crear_alumno' %}>Inscribir alumno/a</a></li>
+</button>
+<form action="" method="get">
+    {{formulario}}
+    <button>Buscar</button>
+</form>
+
+{% if alumnos %}
+{% for alumno in alumnos %}
+<li>Nombre: {{alumno.nombre}} - Apellido: {{alumno.apellido}} - Curso: {{alumno.curso}} - División {{alumno.division}}</li>
+{% endfor %}
+{% else %}
+<p>No se han encontrado datos.</p>
+{% endif %}
+{% endblock contenido %}
